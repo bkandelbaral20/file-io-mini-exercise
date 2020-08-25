@@ -4,6 +4,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.io.FileWriter;
 
 public class FileIoMiniExercise {
     public static void main(String[] args) {
@@ -18,24 +19,40 @@ public class FileIoMiniExercise {
         List<String> names = new ArrayList<>();
 
         // TODO: read the contents of the instructor-names.txt file and store the list of strings into the 'names' variable
+        try {
+            names = Files.readAllLines(p);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
 
 
-        // TODO: assign the 'instructors' variable a list of Instructor objects with names matching the list of strings/names from the text file (the Instructor class has a helpful method for this)
+        // TODO: assign the 'instructors' variable a list of Instructor objects with names matching the list of
+        //  strings/names from the text file (the Instructor class has a helpful method for this)
+
+        for (String name : names){
+            String[] info = name.split(" \n ");
+            instructors.putIfAbsent(info[0], info[1]);
+        }
 
 
         // TODO: greet all instructors by their names
+        if (Files.exists(p)) {
+            System.out.println("Hello,");
+        } else {
+            System.out.println("File not found.");
+
+            // TODO: change "Fred" to "David" in the list of Instructor objects
 
 
-        // TODO: change "Fred" to "David" in the list of Instructor objects
 
-
-        // TODO: update the list of strings/names ('names' variable) to the latest names from the Instructor objects (the Instructor class has a helpful method for this)
+            // TODO: update the list of strings/names ('names' variable) to the latest names from the Instructor objects
+        //  (the Instructor class has a helpful method for this)
 
 
         // TODO: overwrite the instructors-names.txt file with the latest list of names
 
         // TODO: uncomment the following line
-//        System.out.println("============== after name change...");
+        System.out.println("============== after name change...");
 
         // TODO: greet instructors again (no need to reread the text file again; just use the existing list of instructors in memory)
 
