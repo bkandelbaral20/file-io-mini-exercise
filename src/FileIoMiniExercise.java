@@ -9,11 +9,13 @@ public class FileIoMiniExercise {
     public static void main(String[] args) {
 
         // TODO: define the path to the instructor-names.txt file
+         Path p = Paths.get("./src/instructor-names.txt").normalize();
+
 
 
         // TODO: uncomment the following variable declarations
-//        List<Instructor> instructors;
-//        List<String> names = new ArrayList<>();
+        List<Instructor> instructors;
+        List<String> names = new ArrayList<>();
 
         // TODO: read the contents of the instructor-names.txt file and store the list of strings into the 'names' variable
 
